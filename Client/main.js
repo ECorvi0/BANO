@@ -1,5 +1,3 @@
-/// Remember to put jquery from their website
-
 // creation de la carte
 var mymap = L.map("mapid").setView([48.5, 7.5], 12);
 const tileGeoportailWMTS = 'https://wxs.ign.fr/essentiels/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=ORTHOIMAGERY.ORTHOPHOTOS&format=image/jpeg&style=normal'
