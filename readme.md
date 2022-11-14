@@ -18,6 +18,6 @@ Pour visualiser le résultat, j'ai utilisé _Live Server_ de VSCode, qui permet 
 
 Pour que l'application fonctionne, l'application doit ne pas être la racine du serveur
 
-![Image intersection][Intersection]
+![Image intersection](Intersection)
 
 Intersection: Images/Intersection.PNG
