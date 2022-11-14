@@ -2,13 +2,14 @@ L'application est à télécharger sous forme d'un dossier compressé.
 
 ![Image téléchargement](Images/Download.PNG)
 
-Cette application est contenue dans un dossier.
+Une fois téléchargé, il faut ensuite décompresser le dossier.
 
-J'ai appelé ce dossier projet BANO, mais vous pouvez le renommer.
+
+J'ai appelé ce dossier _projet BANO_, mais vous pouvez le renommer.
 
 BANO signifie Base d’Adresses Nationale Ouverte.
 
-L'application est ensuite séparée en deux sous-dossiers.
+L'application est contenue dans un dossier, qui contient lui-même trois sous-dossiers.
 
 Le dossier client contient le code de l'application.
 
@@ -18,8 +19,8 @@ Le dossier serveur contient les données que doit traiter l'application.
 
 Pour visualiser le résultat, j'ai utilisé _Live Server_ de VSCode, qui permet de créer un virtualhost.
 
-Pour que l'application fonctionne, l'application doit ne pas être la racine du serveur
+Pour que l'application fonctionne, l'application doit ne pas être la racine du serveur créé via _Live Server_.
 
-
+Le dossier images sert à illustrer la documentation, qui utilise le langage _Markdown_.
 
 ![Image intersection](Images/Intersection.PNG)
