@@ -1,0 +1,36 @@
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
+  <script src='https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js'></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Titre de la page</title>
+</head>
+
+<body>
+  <div id="meltdown"></div>
+  <div id="mapid"><iframe width="600" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+      sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+  </div>
+  <p>Adresses</p>
+  <label>Binaire<input type="radio" name="mode" value="1" id="binary"></label>
+  <label>Graduel<input type="radio" name="mode" value="0" id="gradient"></label>
+  <p>Buffer</p>
+  <label>Oui<input type="radio" name="ouinon" value="1" id="buffer"></label>
+  <label>Non<input type="radio" name="ouinon" value="0"></label>
+  <div><button onclick="getGrid()">Valider</button></div>
+  <div><button onclick="window.location.reload()">Actualiser</button></div>
+
+</body>
+<script src="main.js" type="text/javascript"></script>
+
+</html>
