@@ -20,4 +20,4 @@ Pour que l'application fonctionne, l'application doit ne pas être la racine du 
 
 ![Intersection]
 
-Intersection: /Images/Intersection.png
+Intersection: Projet_BANO/Images/Intersection.png
