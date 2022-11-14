@@ -23,8 +23,6 @@ tiles.addTo(mymap);
 
 //jlayer.addLayer(mymap);
 
-const book = '/Projet BANO/Serveur/bano-67.geojson';
-const grid972 = "/Projet BANO/Serveur/Compte_adresses_972.geojson";
 const grid = "/Projet BANO/Serveur/Compte_adresses_67.geojson";
 const bufferedGrid = "/Projet BANO/Serveur/buffered_Compte_adresses_67.geojson";
 
@@ -65,26 +63,12 @@ function shadedStyle(feature) {
     };
 }
 
-async function getBANO() {
-    //permet de vérifier visuellement l'implémentation des adresses
-    const response = await fetch(book);
-    const data = await response.json();
-    L.geoJSON(data).addTo(mymap);
-    //getAdressesBANO(data.message);
-    /*data.forEach(function (obj) {
-        const long = obj.lon;
-        const lat = obj.lat;
-        console.log(data);
-        L.marker([lat, long]).addTo(mymap);
-    });*/
-}
-
 async function getGrid() {
     //permet de vérifier visuellement l'implémentation des données carroyées
     const response = await fetch(grid);
     const data = await response.json();
     var geoJsonGrid = L.geoJson(data);
-    //non fonctionnel (problème avec la bibliothèque turf)
+    //Vérifie si le bouton buffer est coché
     if (document.getElementById('buffer').checked) {
         const bufferedResponse = await fetch(bufferedGrid);
         const bufferedData = await bufferedResponse.json();
@@ -109,29 +93,6 @@ async function getGrid() {
         L.geoJSON(data, { style: binaryStyle }).addTo(mymap);
     }*/
 }
-/*async function count() {
-    const response = await fetch(grid);
-    const layer = await response.json();
-    const input = await fetch(book);
-    const data = await input.json();
-    var geoJsonLayer = L.geoJson(layer);
-    var c = [0];
-    i = 0;
-    //Prend chaque carreau et cherche les adresses contenues dans le carreau
-    geoJsonLayer.eachLayer(function (feature) {
-        data.forEach(function (obj) {
-            if (turf.booleanWithin(feature.properties, obj)) {
-                c[i] = c[i] + 1;
-            }
-        });
-        //permet de toujours traiter le dernier élément de la liste
-        c = c + [0];
-        i += 1;
-        //console.log(i);
-        console.log(c[i]);
-    });
-    return (c);
-};*/
 
 var radiosOui = document.getElementsByName('ouinon');
 var radiosEval = document.getElementsByName('eval');
@@ -157,22 +118,4 @@ for (i = 0; i < radiosEval.length; i++) {
     }
 }
 
-
-
-async function test() {
-    var nepalDistrict = L.geoJSON(grid, {
-        onEachFeature: function (feature, layer) {
-            area = (turf.area(feature) / 1000000).toFixed(2);
-            center_lat = turf.center(feature).geometry.coordinates[1]
-            center_long = turf.center(feature).geometry.coordinates[0]
-            bbox = turf.bbox(feature).toString();
-            layer.bindPopup(`<b>Area: </b> ${area} </br> <b>Center(x,y): </b> (${center_long, center_lat}) </br> <b>Bbox: </b> [${bbox}]`)
-        }
-    });
-    console.log('working');
-}
-
-//test();
-//getBANO();
 getGrid();
-//count();
