@@ -12,6 +12,8 @@ window.onload = function () {
         }).addTo(mymap);
 }
 
+//acces aux donnees
+
 const grid = "/Projet BANO/Serveur/Compte_adresses_67.geojson";
 const bufferedGrid = "/Projet BANO/Serveur/buffered_Compte_adresses_67.geojson";
 
