@@ -1,27 +1,18 @@
 /// Remember to put jquery from their website
 
 // creation de la carte
-var mymap = L.map("mapid", {
-}).setView([48.5, 7.5], 12);
-const attribution = 'Map data &copy; <a href="https://geoservices.ign.fr/">IGN</a> contributors, Imagery © <a href="https://www.geoportail.fr/">Géoportail</a>'
-const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-// creation et ajout de la couche WMS à la carte
-/*L.geoportalLayer.WMS({
-    layer: "OI.OrthoimageCoverage",
-    attribution: attribution
-}).addTo(mymap);*/
-
-const tiles = L.tileLayer(tileUrl, { attribution });
-tiles.addTo(mymap);
-
-//const tileGeoportail = 'https://wxs.ign.fr/essentiels/geoportail/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTHOIMAGERY.ORTHOPHOTOS' +
-//'&TILEMATRIXSET=PM&TILEMATRIX=14&TILECOL=8180&TILEROW=5905&STYLE=normal&FORMAT=image/jpeg'
-//const tileGeoportailWFS = 'https://wxs.ign.fr/parcellaire/geoportail/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=DescribeFeatureType&TYPENAME=CADASTRALPARCELS.PARCELLAIRE_EXPRESS:parcelle&outputFormat=application/json'
-//const BANOurl = 'https://wxs.ign.fr/adresse/geoportail/v/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities'
-
-//var jlayer = new L.LayerJSON({ url: "search.php?lat1={lat1}&lat2={lat2}&lon1={lon1}&lon2={lon2}" });
-
-//jlayer.addLayer(mymap);
+var mymap = L.map("mapid").setView([48.5, 7.5], 12);
+const tileGeoportailWMTS = 'https://wxs.ign.fr/essentiels/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=ORTHOIMAGERY.ORTHOPHOTOS&format=image/jpeg&style=normal'
+window.onload = function () {
+    L.tileLayer(
+        tileGeoportailWMTS,
+        {
+            minZoom: 0,
+            maxZoom: 18,
+            tileSize: 256,
+            attribution: "IGN-F/Géoportail"
+        }).addTo(mymap);
+}
 
 const grid = "/Projet BANO/Serveur/Compte_adresses_67.geojson";
 const bufferedGrid = "/Projet BANO/Serveur/buffered_Compte_adresses_67.geojson";
@@ -77,11 +68,6 @@ async function getGrid() {
         var geoJsonGridBuffered = turf.buffer(geoJsonGrid.toGeoJSON(), -0.05, { units: 'kilometers' });
         var leafletGridBuffered = L.geoJSON(geoJsonGridBuffered);
         geoJsonGrid = leafletGridBuffered;
-        /*data.forEach(function (feature) {
-            var bufferLoad = turf.buffer(feature, 0.05, { units: 'kilometers' });
-            var bufferDisplay = L.geoJson(bufferLoad, { style: shadedStyle });
-            L.geoJson(bufferDisplay).addTo(mymap);
-        });*/
     }
     if (document.getElementById('gradient').checked) {
         L.geoJSON(geoJsonGrid.toGeoJSON(), { style: shadedStyle }).addTo(mymap);
@@ -89,9 +75,6 @@ async function getGrid() {
     else if (document.getElementById('binary').checked) {
         L.geoJSON(geoJsonGrid.toGeoJSON(), { style: binaryStyle }).addTo(mymap);
     }
-    /*else {
-        L.geoJSON(data, { style: binaryStyle }).addTo(mymap);
-    }*/
 }
 
 var radiosOui = document.getElementsByName('ouinon');
