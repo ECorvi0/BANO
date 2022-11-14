@@ -1,5 +1,7 @@
 L'application est à télécharger sous forme d'un dossier compressé.
 
+![Image téléchargement](Images/Download.PNG)
+
 Cette application est contenue dans un dossier.
 
 J'ai appelé ce dossier projet BANO, mais vous pouvez le renommer.
