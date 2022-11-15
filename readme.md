@@ -22,5 +22,3 @@ Pour visualiser le résultat, j'ai utilisé _Live Server_ de VSCode, qui permet 
 Pour que l'application fonctionne, l'application doit ne pas être la racine du serveur créé via _Live Server_.
 
 Le dossier images sert à illustrer la documentation, qui utilise le langage _Markdown_.
-
-![Image intersection](Images/Intersection.PNG)
