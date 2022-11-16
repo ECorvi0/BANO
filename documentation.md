@@ -20,3 +20,13 @@ Les données serveur proviennent d'un traitement sous QGIS.
 
 ## Application client
 
+### Fond de carte
+
+### Boutons
+
+#### Boutons radio
+
+#### Boutons d'exécution
+
+### Affichage des données carroyées
+
