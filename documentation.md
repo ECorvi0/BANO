@@ -10,4 +10,5 @@ Cela est possible grâce à l'adresse, qui peut être obtenue via la documentati
 
 Les données serveur proviennent d'un traitement sous QGIS.
 
-![Image intersection](Images/Intersection.png)
+![Image intersection](Images/Intersection.PNG)
+
