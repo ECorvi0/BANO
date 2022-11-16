@@ -6,3 +6,8 @@ La première affiche le fond de carte. Pour cela, un flux de données Géoportai
 
 Cela est possible grâce à l'adresse, qui peut être obtenue via la documentation disponible sur le Géoportail.
 
+##Création des données serveur
+
+Les données serveur proviennent d'un traitement sous QGIS.
+
+![Image intersection](Images/Intersection.png)
