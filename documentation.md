@@ -28,6 +28,8 @@ J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 
 
 ![Tampon](Images/Buffer.PNG)
 
+### Conversion en GeoJSON
+
 ## Application client
 
 ### Fond de carte
