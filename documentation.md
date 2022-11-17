@@ -26,6 +26,8 @@ J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 
 
 ### Buffer
 
+![Tampon](Images/Buffer.PNG)
+
 ## Application client
 
 ### Fond de carte
