@@ -46,6 +46,10 @@ Il est en effet possible d'exporter sa couche au format GeoJSON, ainsi que d'aut
 
 #### Boutons radio
 
+Les boutons radio permettent d'alterner entre les deux grilles possibles (avec et sans buffer), et de décider de la visualisation souhaitée.
+
+Il existe deux visualisations. Une visualisation binaire, qui détermine la présence ou l'absence d'adresses, ainsi qu'une visualisation graduelle qui représente la qualité de la couverture de la grille par la BANO.
+
 #### Boutons d'exécution
 
 ### Affichage des données carroyées
