@@ -32,6 +32,12 @@ J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 
 
 ### Conversion en GeoJSON
 
+La conversion en GeoJSON se fait via QGIS.
+
+Il est en effet possible d'exporter sa couche au format GeoJSON, ainsi que d'autres formats.
+
+![Export](Images/Export.PNG)
+
 ## Application client
 
 ### Fond de carte
