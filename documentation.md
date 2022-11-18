@@ -26,6 +26,8 @@ J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 
 
 ### Count points in Polygon
 
+![Compte](Images/Count.PNG)
+
 ### Buffer
 
 ![Tampon](Images/Buffer.PNG)
