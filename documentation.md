@@ -52,5 +52,11 @@ Il existe deux visualisations. Une visualisation binaire, qui détermine la pré
 
 #### Boutons d'exécution
 
+Il y a deux boutons d'exécution.
+
+Le bouton "Valider" est le principal bouton d'exécution, qui permet à l'utilisateur de décider quand la grille doit s'afficher.
+
+Le bouton "Actualiser" est présent pour recharger la page une fois qu'une grille est affichée, pour éviter d'éventuels problèmes de superposition.
+
 ### Affichage des données carroyées
 
