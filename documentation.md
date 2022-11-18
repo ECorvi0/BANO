@@ -28,7 +28,7 @@ J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 
 
 Après l'intersection entre un contour départemental et les grilles caroyées, j'ai introduit la base d'adresses, représentée par des points.
 
-![Compte](Images/Count.PNG)
+![Compte](Images/Compte.PNG)
 
 J'ai ensuite utilisé la fonction _Count in Polygon_ pour calculer le nombre d'adresses dans chaque carreau de la grille de données carroyées.
 
