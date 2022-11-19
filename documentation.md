@@ -6,7 +6,7 @@ L'application contient deux fonctions.
 
 La première affiche le fond de carte. Pour cela, un flux de données Géoportail est utilisé.
 
-Cela est possible grâce à l'adresse, qui peut être obtenue via la documentation disponible sur le Géoportail.
+Cela est possible grâce à l'adresse, qui peut être obtenue via la documentation disponible sur le ![Géoportail](https://geoservices.ign.fr/documentation/services/utilisation-web).
 
 ## Création des données serveur
 
