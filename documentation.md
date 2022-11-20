@@ -50,6 +50,8 @@ Il est en effet possible d'exporter sa couche au format GeoJSON, ainsi que d'aut
 
 ### Fond de carte
 
+Le fond de carte provient d'un flux WMTS du [Géoportail](https://geoservices.ign.fr/documentation/services/utilisation-web/affichage-wmts).
+
 ### Boutons
 
 #### Boutons radio
@@ -62,9 +64,11 @@ Il existe deux visualisations. Une visualisation binaire, qui détermine la pré
 
 Il y a deux boutons d'exécution.
 
-Le bouton "Valider" est le principal bouton d'exécution, qui permet à l'utilisateur de décider quand la grille doit s'afficher.
+Le bouton _Valider_ est le principal bouton d'exécution, qui permet à l'utilisateur de décider quand la grille doit s'afficher.
 
-Le bouton "Actualiser" est présent pour recharger la page une fois qu'une grille est affichée, pour éviter d'éventuels problèmes de superposition.
+Le bouton _Actualiser_ est présent pour recharger la page une fois qu'une grille est affichée, pour éviter d'éventuels problèmes de superposition.
 
 ### Affichage des données carroyées
+
+Les données carroyées s'affichent en appuant sur le bouton _Valider_.
 
