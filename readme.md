@@ -29,6 +29,8 @@ Le dossier images sert à illustrer la documentation, qui utilise le langage _Ma
 
 Au lancement de _Live Server_, le dossier _projet BANO_ s'afichera parmi les autres.
 
+![Dossier](Images/Serveur.PNG)
+
 Il faut cliquer dessus puis sur le sous-dossier _Client_, puis sur le fichier index.html qui se trouve dans ce sous-dossier.
 
 Il y a deux boutons d'exécution.
