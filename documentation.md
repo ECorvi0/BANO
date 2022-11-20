@@ -60,6 +60,8 @@ Il est en effet possible d'exporter sa couche au format GeoJSON, ainsi que d'aut
 
 Le fond de carte provient d'un flux WMTS du [Géoportail](https://geoservices.ign.fr/documentation/services/utilisation-web/affichage-wmts).
 
+![Index](Images/Index.PNG)
+
 ### Boutons
 
 #### Boutons radio
