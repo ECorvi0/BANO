@@ -20,23 +20,31 @@ Les données serveur proviennent d'un traitement sous QGIS.
 
 J'ai utilisé l'intersection à deux reprises.
 
+La première a servi à dimensionner les données à l'échelle d'un département.
+
 Un problème s'est posé au moment de créer les zones tampons.
 
 La projection WGS84, qui est utilisée pour le fond de carte, ne pouvait admettre un tampon en mètres.
 
 J'ai donc recouru au RGF93 pour créer la zone tampon avant de revenir au WGS84 par l'intersection.
 
+L'utilisation de l'intersection comme reprojection est ma seconde utilisation de l'intersection.
+
 ### Count points in Polygon
 
 Après l'intersection entre un contour départemental et les grilles caroyées, j'ai introduit la base d'adresses, représentée par des points.
 
-![Compte](Images/Compte.PNG)
+J'ai ensuite utilisé la fonction _Count in Polygon_ pour calculer le nombre d'adresses dans chaque carreau de la grille de données carroyées, à partir de la grille carroyée et de la base d'adresses.
 
-J'ai ensuite utilisé la fonction _Count in Polygon_ pour calculer le nombre d'adresses dans chaque carreau de la grille de données carroyées.
+![Compte](Images/Compte.PNG)
 
 ### Buffer
 
 ![Tampon](Images/Buffer.PNG)
+
+Afin de pouvoir afficher les résultats avec buffer, j'en ai créé un avec QGIS via la fonctionnalité _Tampon_.
+
+J'ai ensuite appliqué à la grille nouvellement créée le traitement par la fonctionnalité _Count in Polygon_.
 
 ### Conversion en GeoJSON
 
@@ -71,4 +79,6 @@ Le bouton _Actualiser_ est présent pour recharger la page une fois qu'une grill
 ### Affichage des données carroyées
 
 Les données carroyées s'affichent en appuant sur le bouton _Valider_.
+
+Le bouton _Actualiser_ recharge la page, ce qui est à faire entre deux utilisations du bouton _Valider_.
 
