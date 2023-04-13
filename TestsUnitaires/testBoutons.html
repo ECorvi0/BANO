@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-    <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
     <script src='https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js'></script>
     <link rel="stylesheet" type="text/css"
         href="https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css">
@@ -34,6 +33,8 @@
         un premier temps que l'utilisateur doit bien cocher un bouton "mode"
         et un bouton "ouinon" pour que la grille s'affiche.</p>
 
+    <p>Actuellement, ces tests renvoient la grille sans style. Il faudrait qu'aucune grille ne soit affichée pour les 5
+        premiers tests </p>
     <div>Test 1 - Boutons non cochés</div>
     <div>Test 2 - Bouton binaire coché</div>
     <div>Test 3 - Bouton gradient coché</div>
@@ -41,10 +42,10 @@
     <div>Test 5 - Bouton sans buffer coché</div>
     <p>Il faut ensuite vérifier que la bonne grille s'affiche dans les 4 cas
         où une grille doit s'afficher.</p>
-    <div>Test 6 - Bouton binaire coché et Bouton buffer coché -> Rouge et vert + données buffer</div>
-    <div>Test 7 - Bouton gradient coché et Bouton sans buffer coché -> Noir et vert + données sans buffer</div>
-    <div>Test 8 - Bouton binaire coché et Bouton sans buffer coché -> Rouge et vert + données sans buffer</div>
-    <div>Test 9 - Bouton gradient coché et Bouton buffer coché -> Noir et vert + données buffer</div>
+    <div>Test 6 - Bouton binaire coché et Bouton buffer coché - Rouge et vert + données buffer</div>
+    <div>Test 7 - Bouton gradient coché et Bouton sans buffer coché - Noir et vert + données sans buffer</div>
+    <div>Test 8 - Bouton binaire coché et Bouton sans buffer coché - Rouge et vert + données sans buffer</div>
+    <div>Test 9 - Bouton gradient coché et Bouton buffer coché - Noir et vert + données buffer</div>
 
 
 </body>
