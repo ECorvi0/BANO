@@ -1,5 +1,5 @@
 // creation de la carte
-var mymap = L.map("mapid").setView([48.5, 7.5], 14);
+var mymap = L.map('mapid').setView([48.5, 7.5], 14);
 const tileGeoportailWMTS = 'https://wxs.ign.fr/essentiels/geoportail/wmts?service=WMTS&request=GetTile&version=1.0.0&tilematrixset=PM&tilematrix={z}&tilecol={x}&tilerow={y}&layer=ORTHOIMAGERY.ORTHOPHOTOS&format=image/jpeg&style=normal'
 
 L.tileLayer(
@@ -8,20 +8,20 @@ L.tileLayer(
         minZoom: 8,
         maxZoom: 18,
         tileSize: 256,
-        attribution: "IGN-F/Géoportail"
+        attribution: 'IGN-F/Géoportail'
     }).addTo(mymap);
 
 
 // Accès aux données carroyées
 
-const grid = "/Projet_BANO/Serveur/Compte_adresses_67.geojson";
-const bufferedGrid = "/Projet_BANO/Serveur/buffered_Compte_adresses_67.geojson";
+const grid = '/Projet_BANO/Serveur/Compte_adresses_67.geojson';
+const bufferedGrid = '/Projet_BANO/Serveur/buffered_Compte_adresses_67.geojson';
 
 //fonction de coloration des données carroyées pour faciliter la visualisation
 
 function getBinaryColor(n) {
-    return n >= 1 ? "#00FF00" :
-        "#FF0000";
+    return n >= 1 ? '#00FF00' :
+        '#FF0000';
 }
 
 var r = 0;
@@ -29,7 +29,7 @@ var g = 255;
 var b = 0;
 
 function getShadedColor(n) {
-    return "rgba(" + r * n + "," + g * n + "," + b * n + ",1)";
+    return 'rgba(' + r * n + ',' + g * n + ',' + b * n + ',1)';
 }
 
 // Coloration binaire
@@ -74,7 +74,7 @@ var geoJsonGrid = L.geoJSON(null, { style: mapStyle }).addTo(mymap)
 
 
 //permet de vérifier visuellement l'implémentation des données carroyées
-async function getGrid() {
+async function createGrid() {
     // Récupération de la grille sans buffer
     if (document.getElementById('noBuffer').checked) {
         fetch(grid)
@@ -83,7 +83,15 @@ async function getGrid() {
                 // Vide la couche de données (elle peut être vide avant cette étape)
                 geoJsonGrid.clearLayers();
                 // Rajoute les nouvelles données à la couche
-                geoJsonGrid.addData(data);
+                data.features.forEach(feature => {
+                    const bounds = L.latLngBounds(feature.geometry.coordinates);
+                    const mapBounds = L.latLngBounds(L.latLng([mapid.offsetTop, mapid.offsetLeft]), L.latLng([mapid.offsetTop + mapid.offsetHeight, mapid.offsetLeft + mapid.offsetWidth]));
+                    if (bounds.intersects(mapBounds)) {
+                        geoJsonGrid.addData(feature);
+                    }
+                });
+                // Rajoute les nouvelles données à la couche
+                //geoJsonGrid.addData(data);
             });
     }
     //Vérifie si le bouton buffer est coché
@@ -101,6 +109,18 @@ async function getGrid() {
             });
     }
 }
+
+// Vérifie que l'utilisateur a choisi son style avant d'afficher la grille
+
+async function getGrid() {
+    if (document.getElementById('binary').checked) {
+        createGrid()
+    }
+    else if (document.getElementById('gradient').checked) {
+        createGrid()
+    }
+}
+
 
 // Appelle la fonction getGrid sur un click, zoom ou déplacement
 mymap.on('moveend', getGrid);
@@ -123,3 +143,4 @@ for (i = 0; i < radiosMode.length; i++) {
         }
     }
 }
+
