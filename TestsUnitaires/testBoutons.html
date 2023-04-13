@@ -1,1 +1,53 @@
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
+    <script src='https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js'></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css">
+    <link rel="stylesheet" href="../Client/styles.css">
+    <title>Titre de la page</title>
+</head>
+
+<body>
+    <div id="meltdown"></div>
+    <div id="mapid"></div>
+    <p>Adresses</p>
+    <label>Binaire<input type="radio" name="mode" id="binary"></label>
+    <label>Graduel<input type="radio" name="mode" id="gradient"></label>
+    <p>Buffer</p>
+    <label>Oui<input type="radio" name="ouinon" id="buffer"></label>
+    <label>Non<input type="radio" name="ouinon" id="noBuffer"></label>
+
+    <p>Il a été vérifié qu'il n'est pas possible de cocher deux boutons avec
+        un "name" identique, ce qui enlève le test où les 4 boutons sont cochés,
+        les 4 tests où 3 boutons sont cochés et 2 des 6 tests où 2 boutons sont cochés.</p>
+
+    <p>Nous nous retrouvons ainsi avec 9 tests qui doivent vérifier dans
+        un premier temps que l'utilisateur doit bien cocher un bouton "mode"
+        et un bouton "ouinon" pour que la grille s'affiche.</p>
+
+    <div>Test 1 - Boutons non cochés</div>
+    <div>Test 2 - Bouton binaire coché</div>
+    <div>Test 3 - Bouton gradient coché</div>
+    <div>Test 4 - Bouton buffer coché</div>
+    <div>Test 5 - Bouton sans buffer coché</div>
+    <p>Il faut ensuite vérifier que la bonne grille s'affiche dans les 4 cas
+        où une grille doit s'afficher.</p>
+    <div>Test 6 - Bouton binaire coché et Bouton buffer coché -> Rouge et vert + données buffer</div>
+    <div>Test 7 - Bouton gradient coché et Bouton sans buffer coché -> Noir et vert + données sans buffer</div>
+    <div>Test 8 - Bouton binaire coché et Bouton sans buffer coché -> Rouge et vert + données sans buffer</div>
+    <div>Test 9 - Bouton gradient coché et Bouton buffer coché -> Noir et vert + données buffer</div>
+
+
+</body>
+<script src="../Client/main.js" type="text/javascript"></script>
+
+</html>
