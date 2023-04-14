@@ -8,7 +8,6 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-  <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
   <script src='https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js'></script>
   <link rel="stylesheet" type="text/css"
     href="https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css">
@@ -17,7 +16,6 @@
 </head>
 
 <body>
-  <div id="meltdown"></div>
   <div id="mapid"></div>
   <p>Adresses</p>
   <label>Binaire<input type="radio" name="mode" id="binary"></label>
@@ -25,8 +23,7 @@
   <p>Buffer</p>
   <label>Oui<input type="radio" name="ouinon" id="buffer"></label>
   <label>Non<input type="radio" name="ouinon" id="noBuffer"></label>
-  <div><button class="button" onclick="getGrid()">Valider</button></div>
-
+  <div><button onclick="createGrid()">Valider</button></div>
 </body>
 <script src="main.js" type="text/javascript"></script>
 
