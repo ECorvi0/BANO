@@ -11,12 +11,9 @@ L.tileLayer(
         attribution: 'IGN-F/Géoportail'
     }).addTo(mymap);
 
-
 // Accès aux données carroyées
 
 const totalGrid = '/Projet_BANO/Serveur/bano-67-complete.geojson'
-// const grid = '/Projet_BANO/Serveur/Compte_adresses_67.geojson';
-// const bufferedGrid = '/Projet_BANO/Serveur/buffered_Compte_adresses_67.geojson';
 
 //fonction de coloration des données carroyées pour faciliter la visualisation
 
@@ -87,21 +84,21 @@ function shadedBufferedStyle(feature) {
 function mapStyle(feature) {
     if (document.getElementById('binary').checked) {
         if (document.getElementById('noBuffer').checked) {
-            console.log(01)
+            console.log("Binaire sans buffer")
             return binaryStyle(feature)
         }
         else if (document.getElementById('buffer').checked) {
-            console.log(00)
+            console.log("Binaire avec buffer")
             return binaryBufferedStyle(feature)
         }
     }
     else if (document.getElementById('gradient').checked) {
         if (document.getElementById('noBuffer').checked) {
-            console.log(11)
+            console.log("Graduel sans buffer")
             return shadedStyle(feature)
         }
         else if (document.getElementById('buffer').checked) {
-            console.log(10)
+            console.log("Graduel avec buffer")
             return shadedBufferedStyle(feature)
         }
     }
@@ -112,21 +109,47 @@ var geoJsonGrid = L.geoJSON(null, { style: mapStyle }).addTo(mymap)
 
 
 //permet de vérifier visuellement l'implémentation des données carroyées
-async function getGrid() {
+function getGrid() {
     // Récupération de la grille sans buffer
     fetch(totalGrid)
         .then(response => response.json())
         .then(data => {
             // Vide la couche de données (elle peut être vide avant cette étape)
             geoJsonGrid.clearLayers();
-
+            // Rajoute les nouvelles données à la couche
+            data.features.forEach(feature => {
+                const bounds = L.latLngBounds(feature.geometry.coordinates);
+                const mapBounds = L.latLngBounds(L.latLng([mapid.offsetTop, mapid.offsetLeft]), L.latLng([mapid.offsetTop + mapid.offsetHeight, mapid.offsetLeft + mapid.offsetWidth]));
+                if (bounds.intersects(mapBounds)) {
+                    geoJsonGrid.addData(feature);
+                }
+            });
             // Rajoute les nouvelles données à la couche
             geoJsonGrid.addData(data);
         });
 }
 
+function createGrid() {
+    if (document.getElementById('binary').checked) {
+        if (document.getElementById('noBuffer').checked) {
+            getGrid()
+        }
+        else if (document.getElementById('buffer').checked) {
+            getGrid()
+        }
+    }
+    else if (document.getElementById('gradient').checked) {
+        if (document.getElementById('noBuffer').checked) {
+            getGrid()
+        }
+        else if (document.getElementById('buffer').checked) {
+            getGrid()
+        }
+    }
+}
+
 // Appelle la fonction getGrid sur un click, zoom ou déplacement
-mymap.on('moveend', getGrid);
+mymap.on('moveend', createGrid);
 
 var radiosOui = document.getElementsByName('ouinon');
 var radiosMode = document.getElementsByName('mode');
@@ -146,4 +169,3 @@ for (i = 0; i < radiosMode.length; i++) {
         }
     }
 }
-
