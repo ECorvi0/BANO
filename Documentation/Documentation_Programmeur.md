@@ -14,13 +14,15 @@ Le fichier stles.css règle la taille de la carte. Des ajouts seront faits avec 
 
 Le fichier main.js sert à communiquer avec le serveur par AJAX, avec des données en format GeoJson, pour l'envoi et le retour de la requête.
 
-Création de la carte Leaflet :
+Le script main.js commence par la création de la carte Leaflet.
 
-Fond de carte issu d'un flux de données WMTS Géoportail.
+Cette carte reçoit un fond de carte issu d'un flux de données WMTS Géoportail.
 
-Fonction mapStyle()
+Je définis d'abord deux fonctions getBinaryColor() et getShadedColor() qui définissent respectivement la couleur qui sera renvoyée pour l'affichage binaire et pour l'affichage graduel.
 
-Contient des fonctions style(feature), qui définissent des styles pour la grille.
+Je définis ensuite les fonctions de style binaryStyle(feature), binaryBufferedStyle(feature), shadedStyle(feature) et shadedBufferedStyle(feature).
+
+Les 4 styles possibles (2*2, respectivement pour la couleur, et l'attribut à utiliser) sont ensuite réunies dans une fonction mapStyle(), qui définit le style pour la grille vide geoJsonGrid qui contiendra les données carroyées.
 
 Il est théoriquement possible, dans le cas du ratio avec buffer d'obtenir un ratio supérieur à 1, vu qu'il est impossible de connaître exactement la population dans un rayon inférieur à 200 mètres (taille des plus petits carreaux) autour d'un carreau, alors que le buffer est de seulement 50 mètres.
 
@@ -31,9 +33,9 @@ Il existe donc des conséquences à ce choix normalement géré par le serveur, 
 
 La fonction getGrid() permet d'afficher la grille.
 
-Ajout d'une fonction createGrid() pour éviter l'apparition de grilles sans styles.
+J'ai aussi ajouté une fonction createGrid() pour éviter l'apparition de grilles sans styles, problème que j'ai pu détecter grâce à les tests unitaires définis en Partie 3.
 
-Boucles sur les boutons radio.
+Il y a enfin des boucles sur les boutons radio, qui permettent de les décocher par Ctrl+click.
 
 Partie 2 : La partie serveur, qui contient les données des tests unitaires
 
