@@ -1,45 +1,57 @@
-Ce document présente les différents fichiers constituant le rendu de ce projet.
+Ce document présente les différents fichiers qui constituent le rendu de ce projet.
 
 Partie 1 : La partie client
 
 1.1 Page HTML
 
-La page HTML contient les espaces qui permettent d'afficher les différentes informations que le client doit récupérer.
+La page HTML contient balises qui servent d'emplacements pour afficher les différentes informations que le client doit récupérer.
 
 1.2 CSS
 
-Le fichier stles.css règle la taille de la carte. Des ajouts seront faits avec l'avancement du projet.
+Le fichier styles.css règle la taille de la carte. 
 
 1.3 JavaScript
 
-Le fichier main.js sert à communiquer avec le serveur par AJAX, avec des données en format GeoJson, pour l'envoi et le retour de la requête.
+Le fichier main.js sert à communiquer avec le serveur par AJAX des données échangées en format GeoJson, pour l'envoi comme pour le retour de la requête.
 
-Le script main.js commence par la création de la carte Leaflet.
+Le script main.js commence par la création d'une carte Leaflet via la fonction "map".
 
 Cette carte reçoit un fond de carte issu d'un flux de données WMTS Géoportail.
 
-Je définis d'abord deux fonctions getBinaryColor() et getShadedColor() qui définissent respectivement la couleur qui sera renvoyée pour l'affichage binaire et pour l'affichage graduel.
+Après l'initialisation de la carte et du fond de carte, je crée deux fonctions getBinaryColor() et getShadedColor() qui définissent respectivement la couleur qui sera renvoyée pour l'affichage binaire et pour l'affichage graduel.
 
-Je définis ensuite les fonctions de style binaryStyle(feature), binaryBufferedStyle(feature), shadedStyle(feature) et shadedBufferedStyle(feature).
+L'affichage binaire définit deux couleurs, le rouge et le vert.
+Un carreau qui ne contient aucune adresse est affiché en rouge, tandis qu'un carreau qui contient des adresses est affiché en vert.
 
-Les 4 styles possibles (2*2, respectivement pour la couleur, et l'attribut à utiliser) sont ensuite réunies dans une fonction mapStyle(), qui définit le style pour la grille vide geoJsonGrid qui contiendra les données carroyées.
+L'affichage graduel définit un spectre dont les extrémités sont le noir (absence d'adresses) et le vert.
+L'intensité du vert est égal au ratio population/adresses.
 
-Il est théoriquement possible, dans le cas du ratio avec buffer d'obtenir un ratio supérieur à 1, vu qu'il est impossible de connaître exactement la population dans un rayon inférieur à 200 mètres (taille des plus petits carreaux) autour d'un carreau, alors que le buffer est de seulement 50 mètres.
+Il est théoriquement possible, dans le cas du ratio avec buffer d'obtenir un ratio supérieur à 1, vu qu'il est impossible de connaître exactement la population dans un rayon inférieur à 200 mètres (taille des plus petits carreaux) autour d'un carreau, et que le buffer est de seulement 50 mètres.
 
 Pour que ça n'arrive pas trop souvent, un facteur correctif a été ajouté dans la configuration avec buffer.
 
 Un ratio supérieur à 1 sera affiché identiquement à un ratio égal à 1.
 Il existe donc des conséquences à ce choix normalement géré par le serveur, mais elles restent peu importantes, et ne modifient pas la compréhension de l'information par l'utilisateur.
 
+Je définis ensuite les fonctions de style binaryStyle(feature), binaryBufferedStyle(feature), shadedStyle(feature) et shadedBufferedStyle(feature).
+
+Les 4 styles possibles (2*2, respectivement pour la couleur, et l'attribut à utiliser) sont ensuite réunies dans une fonction mapStyle(), qui définit le style pour la grille vide geoJsonGrid qui contiendra les données carroyées.
+
+La construction des données utilisées, et la création des deux attributs qui en découle et justifie le recours à 4 styles est décrite dans la partie 2 sur le jeu de données.
+
 La fonction getGrid() permet d'afficher la grille.
 
-J'ai aussi ajouté une fonction createGrid() pour éviter l'apparition de grilles sans styles, problème que j'ai pu détecter grâce à les tests unitaires définis en Partie 3.
+C'est dans cette fonction que la communication avec le serveur se fait via AJAX.
 
-Il y a enfin des boucles sur les boutons radio, qui permettent de les décocher par Ctrl+click.
 
-Partie 2 : La partie serveur, qui contient les données des tests unitaires
 
-Mon serveur est composé de fichiers geojson que j'ai retraités avec QGIS 3.12.
+J'ai aussi ajouté une fonction createGrid() pour éviter l'apparition de grilles sans styles, problème que j'ai pu détecter grâce aux tests unitaires définis en Partie 3.
+
+Il y a enfin des boucles sur les boutons radio, qui permettent de les décocher par Ctrl+clic.
+
+Partie 2 : Le jeu de données des tests unitaires
+
+Mon jeu de données est composé de fichiers geojson que j'ai retraités avec QGIS 3.12.
 
 Les fichiers utilisés pour le traitement :
 - Base d'adresses BANO de l'INSEE
