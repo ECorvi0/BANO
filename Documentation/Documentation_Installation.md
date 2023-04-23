@@ -11,7 +11,7 @@ Pour l’installer, il est possible de le télécharger sous forme d'un dossier 
 
 C'est la méthode qui est proposée dans ce guide d'installation.
 
-![Image téléchargement](Projet_BANO/blob/main/Images/Download.PNG)
+![Image téléchargement](/Projet_BANO/blob/main/Images/Download.PNG)
 
 Une fois téléchargé, il faut ensuite décompresser le fichier téléchargé sous forme d'archive.
 
