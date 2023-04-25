@@ -13,7 +13,7 @@ L.tileLayer(
 
 // Accès aux données carroyées
 
-const totalGrid = '/Projet_BANO/Serveur/bano-67-complete.geojson'
+const totalGrid = 'bano-67-complete.geojson'
 
 //fonction de coloration des données carroyées pour faciliter la visualisation
 
@@ -27,7 +27,14 @@ var g = 255;
 var b = 0;
 
 function getShadedColor(n) {
-    return 'rgba(' + r * n + ',' + g * n + ',' + b * n + ',1)';
+    return n >= 1 ? '#00FF00' :
+        n >= 0.8 ? '#00EE00' :
+            n >= 0.6 ? '#00BB00' :
+                n >= 0.4 ? '#009900' :
+                    n >= 0.2 ? '#006600' :
+                        n >= 0.01 ? '#003300' :
+                            '#000000';
+    //return 'rgba(' + r * n + ',' + g * n + ',' + b * n + ',1)';
 }
 
 // Coloration binaire
@@ -84,25 +91,27 @@ function shadedBufferedStyle(feature) {
 function mapStyle(feature) {
     if (document.getElementById('binary').checked) {
         if (document.getElementById('noBuffer').checked) {
-            console.log("Binaire sans buffer")
+            console.log("Binaire sans buffer") // test unitaire
             return binaryStyle(feature)
         }
         else if (document.getElementById('buffer').checked) {
-            console.log("Binaire avec buffer")
+            console.log("Binaire avec buffer") // test unitaire
             return binaryBufferedStyle(feature)
         }
     }
     else if (document.getElementById('gradient').checked) {
         if (document.getElementById('noBuffer').checked) {
-            console.log("Graduel sans buffer")
+            console.log("Graduel sans buffer") // test unitaire
             return shadedStyle(feature)
         }
         else if (document.getElementById('buffer').checked) {
-            console.log("Graduel avec buffer")
+            console.log("Graduel avec buffer") // test unitaire
             return shadedBufferedStyle(feature)
         }
     }
 }
+
+
 
 // Initialisation de la grille
 var geoJsonGrid = L.geoJSON(null, { style: mapStyle }).addTo(mymap)
@@ -129,8 +138,29 @@ function getGrid() {
         });
 }
 
+var legend = L.control({ position: 'bottomright' });
+
 function createGrid() {
     if (document.getElementById('binary').checked) {
+        // Enlève la légende si une légende est déjà affichée
+        if (legend) {
+            legend.remove();
+        }
+        // Ajout d'une légende
+
+        legend.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'legend');
+
+            div.innerHTML +=
+                '<i style="background: #ff0000"></i><span>Aucune adresses</span><br>';
+            div.innerHTML +=
+                '<i style="background: #00ff00"></i><span>Des adresses</span><br>';
+
+            return div;
+        };
+        legend.addTo(mymap);
+
         if (document.getElementById('noBuffer').checked) {
             getGrid()
         }
@@ -139,6 +169,36 @@ function createGrid() {
         }
     }
     else if (document.getElementById('gradient').checked) {
+        if (legend) {
+            legend.remove();
+        }
+        // Ajout d'une légende
+
+        legend.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'legend');
+
+            div.innerHTML +=
+                '<i></i><span>Ratio adresses/population</span><br>';
+            div.innerHTML +=
+                '<i style="background: #00ff00"></i><span>Supérieur ou égal à 1</span><br>';
+            div.innerHTML +=
+                '<i style="background: #00ee00"></i><span>Supérieur à 0.8</span><br>';
+            div.innerHTML +=
+                '<i style="background: #00bb00"></i><span>Supérieur à 0.6</span><br>';
+            div.innerHTML +=
+                '<i style="background: #009900"></i><span>Supérieur à 0.4</span><br>';
+            div.innerHTML +=
+                '<i style="background: #006600"></i><span>Supérieur à 0.2</span><br>';
+            div.innerHTML +=
+                '<i style="background: #003300"></i><span>Supérieur à 0.01</span><br>';
+            div.innerHTML +=
+                '<i style="background: #000000"></i><span>Inférieur à 0.01</span><br>';
+
+            return div;
+        };
+        legend.addTo(mymap);
+
         if (document.getElementById('noBuffer').checked) {
             getGrid()
         }
