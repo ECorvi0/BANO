@@ -24,6 +24,7 @@
     <p>Buffer</p>
     <label>Oui<input type="radio" name="ouinon" id="buffer"></label>
     <label>Non<input type="radio" name="ouinon" id="noBuffer"></label>
+    <div><button onclick="createGrid()">Valider</button></div>
 
     <p>Il a été vérifié qu'il n'est pas possible de cocher deux boutons avec
         un "name" identique, ce qui enlève le test où les 4 boutons sont cochés,
@@ -33,15 +34,15 @@
         un premier temps que l'utilisateur doit bien cocher un bouton "mode"
         et un bouton "ouinon" pour que la grille s'affiche.</p>
 
-    <p>Actuellement, ces tests renvoient la grille sans style. Il faudrait qu'aucune grille ne soit affichée pour les 5
-        premiers tests </p>
+    <p>Actuellement, les 5 premiers tests renvoient la grille sans style.
+        Il faudrait qu'aucune grille ne soit affichée pour ces tests.</p>
     <div>Test 1 - Boutons non cochés</div>
     <div>Test 2 - Bouton binaire coché</div>
     <div>Test 3 - Bouton gradient coché</div>
     <div>Test 4 - Bouton buffer coché</div>
     <div>Test 5 - Bouton sans buffer coché</div>
-    <p>Il faut ensuite vérifier qu'une grille s'affiche dans les 4 cas
-        où une grille doit s'afficher.</p>
+    <p>Il faut ensuite vérifier qu'une grille s'affiche dans les
+        4 cas suivants, qui sont ceux où une grille doit s'afficher.</p>
     <div>Test 6 - Bouton binaire coché et Bouton buffer coché - Rouge et vert + données buffer</div>
     <div>Test 7 - Bouton gradient coché et Bouton sans buffer coché - Noir et vert + données sans buffer</div>
     <div>Test 8 - Bouton binaire coché et Bouton sans buffer coché - Rouge et vert + données sans buffer</div>
