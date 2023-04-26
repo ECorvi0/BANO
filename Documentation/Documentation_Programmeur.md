@@ -1,16 +1,23 @@
+Documentation programmeur
+Sujet 322 : BANO - Client
+
+Enzo Corvi
+
+30 Avril 2023
+
 Ce document présente les différents fichiers qui constituent le rendu de ce projet.
 
-Partie 1 : La partie client
+Partie 1 : La partie client (BANO/Client)
 
-1.1 Page HTML
+1.1 Page HTML (/index.html)
 
-La page HTML contient balises qui servent d'emplacements pour afficher les différentes informations que le client doit récupérer.
+La page HTML contient les balises qui servent d'emplacements pour afficher les différentes informations que le client doit récupérer.
 
-1.2 CSS
+1.2 CSS (/styles.css)
 
-Le fichier styles.css règle la taille de la carte. 
+Le fichier styles.css règle la taille de la carte et dicte la charte graphique de la légende. 
 
-1.3 JavaScript
+1.3 JavaScript (/main.js)
 
 Le fichier main.js sert à communiquer avec le serveur par AJAX des données échangées en format GeoJson, pour l'envoi comme pour le retour de la requête.
 
@@ -24,7 +31,9 @@ L'affichage binaire définit deux couleurs, le rouge et le vert.
 Un carreau qui ne contient aucune adresse est affiché en rouge, tandis qu'un carreau qui contient des adresses est affiché en vert.
 
 L'affichage graduel définit un spectre dont les extrémités sont le noir (absence d'adresses) et le vert.
-L'intensité du vert est égal au ratio population/adresses.
+L'intensité du vert dépend du ratio adresses/population.
+
+(Insérer légende)
 
 Il est théoriquement possible, dans le cas du ratio avec buffer d'obtenir un ratio supérieur à 1, vu qu'il est impossible de connaître exactement la population dans un rayon inférieur à 200 mètres (taille des plus petits carreaux) autour d'un carreau, et que le buffer est de seulement 50 mètres.
 
@@ -49,13 +58,17 @@ J'ai aussi ajouté une fonction createGrid() pour éviter l'apparition de grille
 
 Il y a enfin des boucles sur les boutons radio, qui permettent de les décocher par Ctrl+clic.
 
-Partie 2 : Le jeu de données des tests unitaires
+Partie 2 : Le jeu de données des tests unitaires (BANO/bano-67-complete.geojson)
 
 Mon jeu de données est composé de fichiers geojson que j'ai retraités avec QGIS 3.12.
 
 Les fichiers utilisés pour le traitement :
 - Base d'adresses BANO de l'INSEE
 - Carreaux INSEE de 200 mètres
+
+Structure de la BANO de l'INSEE :
+
+Structure de la grille de carreaux INSEE de 200 mètres :
 
 Le traitement :
 
@@ -66,7 +79,7 @@ J'ai ensuite téléchargé la BANO (https://adresse.data.gouv.fr/data/ban/adress
 J'ai obtenu en sortie une couche qui reprend les attribus de la couche avec les carreaux INSEE, et possède un attribut "NUMPOINTS" qui donne le nombre d'adresses contenu dans chaque carreau.
 J'ai ensuite utilisé la fonction buffer sur cette couche pour créer la version avec buffer et lui ai aussi appliqué la fonction "Count points in polygon".
 ![Image count points](Images/Buffer.PNG)
-J'ai fait ce choix en raison de l'absence de données carroyées avec buffer, et pour m"assurer d'avoir des nombres justes.
+J'ai fait ce choix en raison de l'absence de données carroyées avec buffer, et pour m'assurer d'avoir des nombres justes.
 J'avais pensé dans un premier temps à créer un attribut "NUMPOINTS_BUFFERED", qui serait l'attribut "NUMPOINTS" multiplié par 9/4, pour corriger la différence de surface liée au buffer.
 Il existe cependant des cas où il n'y a aucune adresse dans un carreau de 200 mètres de côté mais où des points existent 50 mètres autour.
 Cette observation m'a conduit à réitérer la fonction QGIS "Count points in polygon", mais cette fois-ci sur la couche avec buffer.
@@ -77,17 +90,17 @@ J'ai utilisé une grille d'un département entier (Bas-Rhin) en carreaux de 200 
 
 C'est cette couche finale qui me sert de données, qui sont générées par le script main.js et affichées par la page index.html.
 
-Ce sont des conditions plus dures que celles décrites par EF321, qui concerne la partie serveur, mais qui permettent d'avoir une première approche en ce qui concerne la performance.
+Ces conditions permettent d'avoir une première approche en ce qui concerne la performance, en raison du volume du geojson obtenu.
 
-Partie 3 : Les tests unitaires
+Partie 3 : Les tests unitaires (BANO/TestsUnutaires)
 
 Les tests unitaires consistent en des pages html qui vérifient que les éléments de la page fonctionnent bien et qu'ils renvoient les bonnes informations.
 
-Partie 3.1 : testGrille.html
+Partie 3.1 : Test de l'affichage du jeu de données (et de sa légende) (/testGrille.html)
 
 Cette page vérifie quelles combinaisons de boutons sont possibles, et parmi les combinaisons possibles, lesquelles appellent le serveur, simulé ici par un fichier GeoJson.
 
-PArmi les 16 combinaisons théoriquement possibles, 7 sont empêchées par le fonctionnement des boutons radio, qui ne permettent qu'un bouton coché pour un "name" donné.
+Parmi les 16 combinaisons théoriquement possibles, 7 sont empêchées par le fonctionnement des boutons radio, qui ne permettent qu'un bouton coché pour un "name" donné.
 
 Les 9 combinaisons restantes se classent en deux séries de tests.
 
@@ -101,13 +114,14 @@ Les tests de cette série doivent afficher une grille.
 
 La validité du style associé à chacune de ces combinaisons est l'objet de la sous-partie suivante.
 
-Partie 3.2 : testStyles.html
+Partie 3.2 : Test de la fonction mapStyle() (/testStyles.html)
 
 Cette page vérifie quel style est appelé pour chaque combinaison parmi celles qui appellent une grille.
 
 Celles qui ne sont pas censées appeler de grilles sont aussi testées, pour éviter un potentiel bug lié à une interaction imprévue entre la grille et les styles qui peuvent y être associés.
 
-Partie 3.3 : testCarte.html
+Partie 3.3 : Test de l'affichage du fond de carte (/testCarte.html)
 
-Cette page vérifie les différents mouvements qui amènent à un rechargement des données.
+Cette page vérifie les différentes actions sur la carte qui amènent à un rechargement des données.
+
 
