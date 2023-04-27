@@ -20,14 +20,14 @@ Une fois décompressé, vous pouvez vérifier qu’il contient bien l’ensemble
     index.html
     main.js
     styles.css
-    Le dossier TestsUnitaires constitué de :
-    testBoutons.html
-    testStyles.html
-    testCarte.html
     Le dossier Documentation constitué de :
     Documentation_Installation.pdf
     Documentation_Programmeur.pdf
     Documentation_Utilisateur.pdf
+    Le dossier TestsUnitaires constitué de :
+    testBoutons.html
+    testStyles.html
+    testCarte.html
 
 Pour le lancer, il vous faut un navigateur et un serveur php.
 Par exemple, avec un serveur WAMP que vous pouvez télécharger ici : https://www.wampserver.com/
