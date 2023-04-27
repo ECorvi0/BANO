@@ -75,10 +75,14 @@ Le traitement :
 Je disposais au départ de carreaux INSEE pour chaque département mais les informations fournies étaient incomplètes.
 J'ai ensuite téléchargé la BANO (https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/)
 À partir de ce fichier CSV contenant les adresses, j'ai augmenté les données carroyées en y ajoutant l'information du nombre d'adresses contenues dans chaque carreau, grâce à la fonction QGIS "Count points in polygon".
+
 ![Image count points](Images/Compte.PNG)
+
 J'ai obtenu en sortie une couche qui reprend les attribus de la couche avec les carreaux INSEE, et possède un attribut "NUMPOINTS" qui donne le nombre d'adresses contenu dans chaque carreau.
 J'ai ensuite utilisé la fonction buffer sur cette couche pour créer la version avec buffer et lui ai aussi appliqué la fonction "Count points in polygon".
+
 ![Image count points](Images/Buffer.PNG)
+
 J'ai fait ce choix en raison de l'absence de données carroyées avec buffer, et pour m'assurer d'avoir des nombres justes.
 J'avais pensé dans un premier temps à créer un attribut "NUMPOINTS_BUFFERED", qui serait l'attribut "NUMPOINTS" multiplié par 9/4, pour corriger la différence de surface liée au buffer.
 Il existe cependant des cas où il n'y a aucune adresse dans un carreau de 200 mètres de côté mais où des points existent 50 mètres autour.
