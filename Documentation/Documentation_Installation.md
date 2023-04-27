@@ -33,7 +33,7 @@ Pour le lancer, il vous faut un navigateur et un serveur php.
 Par exemple, avec un serveur WAMP que vous pouvez télécharger ici : https://www.wampserver.com/
 Pour utiliser le serveur WAMP, il faut :
 Lancer WAMP et attendre que les serveurs aient démarré
-Ouvrir Firefox et tapez "localhost" en haut, dans la barre de
+Ouvrir Firefox et tapez "localhost/BANO" (ou un autre nom à la place de BANO si vous avez modifié le nom du dossier) en haut, dans la barre de
 recheche : ce faisant, vous vous connectez au serveur WAMP que vous venez de
 lancer. 
 
