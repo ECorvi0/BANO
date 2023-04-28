@@ -19,4 +19,3 @@ Pour décocher les boutons radios, il faut se servir de ctrl+click.
 J'ai utilisé une grille d'un département entier en carreaux de 200 mètres. En raison de sa taille importante (environ 20 000 carreaux), la grille met quelques secondes à s'afficher.
 
 Ces conditions permettent d'avoir une première approche en ce qui concerne la performance.
-
