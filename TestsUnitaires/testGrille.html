@@ -11,19 +11,19 @@
     <script src='https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.js'></script>
     <link rel="stylesheet" type="text/css"
         href="https://ignf.github.io/geoportal-extensions/leaflet-latest/dist/GpPluginLeaflet.css">
-    <link rel="stylesheet" href="../Application/styles.css">
+    <link rel="stylesheet" href="../Client/styles.css">
     <title>Titre de la page</title>
 </head>
 
 <body>
     <div id="meltdown"></div>
     <div id="mapid"></div>
-    <p>Adresses</p>
+    <p>Mode d'affichage de la grille</p>
     <label>Binaire<input type="radio" name="mode" id="binary"></label>
     <label>Graduel<input type="radio" name="mode" id="gradient"></label>
-    <p>Buffer</p>
-    <label>Oui<input type="radio" name="ouinon" id="buffer"></label>
-    <label>Non<input type="radio" name="ouinon" id="noBuffer"></label>
+    <p>Affichage de la grille</p>
+    <label>Grille avec buffer<input type="radio" name="ouinon" id="buffer"></label>
+    <label>Grille sans buffer<input type="radio" name="ouinon" id="noBuffer"></label>
     <div><button onclick="createGrid()">Valider</button></div>
 
     <p>Il a été vérifié qu'il n'est pas possible de cocher deux boutons avec
@@ -50,6 +50,6 @@
 
 
 </body>
-<script src="../Application/main.js" type="text/javascript"></script>
+<script src="../Client/main.js" type="text/javascript"></script>
 
 </html>
