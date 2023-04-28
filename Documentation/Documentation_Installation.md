@@ -15,11 +15,13 @@ C'est la méthode qui est proposée dans ce guide d'installation.
 Une fois téléchargé, il faut ensuite décompresser le dossier.
 
 Une fois décompressé, vous pouvez vérifier qu’il contient bien l’ensemble des fichiers suivants :
-    bano-67-complete.geojson
-    Le dossier Client constitué de :
+    Le dossier Application constitué de :
     index.html
+    Un sous-dossier Client constitué de :
     main.js
     styles.css
+    Un sous-dossier Serveur constitué de :
+    bano-67-complete.geojson
     Le dossier Documentation constitué de :
     Documentation_Installation.pdf
     Documentation_Programmeur.pdf
@@ -38,6 +40,6 @@ recheche : ce faisant, vous vous connectez au serveur WAMP que vous venez de
 lancer. 
 
 Il y aura ensuite un menu qui répertorie les dossiers contenus dans votre instance de WAMP.
-Vous devrez sélectionner le dossier "BANO", puis lancer le fichier index.html contenu dans le sous-dossier "Client" du dossier "BANO".
+Vous devrez sélectionner le dossier "BANO", puis lancer le fichier index.html contenu dans le sous-dossier "Application" du dossier "BANO".
 Vous pourrez ensuite vous référer à la documentation utilisateur pour voir comment utiliser l’application.
     
